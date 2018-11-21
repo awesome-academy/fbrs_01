@@ -11,6 +11,7 @@ import app.service.CommentService;
 import app.service.FollowService;
 import app.service.LoginService;
 import app.service.MarkService;
+import app.service.NotificationService;
 import app.service.RequestService;
 import app.service.ReviewService;
 import app.service.RoleService;
@@ -39,6 +40,8 @@ public class BaseController {
 	protected MarkService  markService;
 	@Autowired
 	protected RequestService requestService;
+	@Autowired
+	protected NotificationService notificationService;
 	@Autowired
 	protected ReloadableResourceBundleMessageSource messageSource;
 

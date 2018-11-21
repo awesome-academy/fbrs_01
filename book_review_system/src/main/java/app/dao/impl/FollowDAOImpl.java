@@ -1,11 +1,11 @@
 package app.dao.impl;
 
+import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-
 import app.dao.FollowDAO;
 import app.dao.GenericDAO;
 import app.model.Follow;
@@ -37,4 +37,15 @@ public class FollowDAOImpl extends GenericDAO<Integer, Follow> implements Follow
 		}
 		return getSession().load(Follow.class, id);
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Follow> getFollowsByFollowed(int followed_id) {
+		@SuppressWarnings("deprecation")
+		Criteria criteria = getSession().createCriteria(Follow.class);
+		criteria.add(Restrictions.eq("followed.id", followed_id));
+		return criteria.list();
+
+	}
+
 }

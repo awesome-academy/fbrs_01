@@ -1,11 +1,15 @@
 package app.dto;
 
+import java.util.List;
+
 public class UserInfo {
 	private Integer id;
 	private String name;
 	private String userName;
 	private String email;
 	private RoleInfo role;
+	private int unWatchedNotifications;
+	private List<NotificationInfo> notifications;
 
 	public UserInfo() {
 	}
@@ -17,6 +21,22 @@ public class UserInfo {
 		this.userName = userName;
 		this.email = email;
 		this.role = role;
+	}
+
+	public int getUnWatchedNotifications() {
+		return unWatchedNotifications;
+	}
+
+	public void setUnWatchedNotifications(int unWatchedNotifications) {
+		this.unWatchedNotifications = unWatchedNotifications;
+	}
+
+	public List<NotificationInfo> getNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(List<NotificationInfo> notifications) {
+		this.notifications = notifications;
 	}
 
 	public Integer getId() {

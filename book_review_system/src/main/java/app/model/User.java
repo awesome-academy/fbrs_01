@@ -18,8 +18,20 @@ public class User {
 	private List<Mark> marks;
 	private List<Review> reviews;
 	private List<Comment> comments;
+	private List<Notification> notifications;
+
+	public List<Notification> getNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(List<Notification> notifications) {
+		this.notifications = notifications;
+	}
 
 	public User() {
+	}
+	public User(Integer id) {
+		this.id = id;
 	}
 
 	public User(Integer id, String fullName, String userName, String password, String phoneNumber, String email,

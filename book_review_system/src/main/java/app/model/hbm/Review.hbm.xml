@@ -30,5 +30,12 @@
 			<list-index column="id" />
 			<one-to-many class="Comment" />
 		</list>
+		<!--notifications  -->
+		<list name="notifications" fetch="select" cascade="delete"
+			inverse="true">
+			<key column="reviewId" />
+			<index column="id" />
+			<one-to-many class="Notification" />
+		</list>
 	</class>
 </hibernate-mapping>

@@ -115,31 +115,26 @@
 					</div>
 				</c:if>
 				<c:if test="${activityMsg == null}">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Activity ID</th>
-							<th>Object ID</th>
-							<th>Description</th>
-							<th>Time</th>
-							<th width="10%"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${activities}" var="activity">
+					<table class="table">
+						<thead>
 							<tr>
-								<td>${activity.id}</td>
-								<td>${activity.objectId}</td>
-								<td>${activity.note}</td>
-								<td>${activity.createdAt}</td>
-								<th>
-									<button type="button" class="btn btn-success">View Detail</button>
-								</th>
+								<th width="30%"></th>
+								<th width="50%">Description</th>
+								<th width="20%">Time</th>
 							</tr>
-						</c:forEach>
+						</thead>
+						<tbody>
+							<c:forEach items="${activities}" var="activity">
+								<tr>
+									<td></td>
+									<td>${activity.note}</td>
+									<td><time class="timeago" datetime="${activity.createdAt}">${activity.createdAt}</time></td>
 
-					</tbody>
-				</table>
+								</tr>
+							</c:forEach>
+
+						</tbody>
+					</table>
 				</c:if>
 			</div>
 		</div>
@@ -152,33 +147,29 @@
 					</div>
 				</c:if>
 				<c:if test="${followerActivitiesMsg == null}">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Activity ID</th>
-							<th>Follower Name</th>
-							<th>Object ID</th>
-							<th>Description</th>
-							<th>Time</th>
-							<th width="10%"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${followerActivities}" var="followerActivity">
+					<table class="table">
+						<thead>
 							<tr>
-								<td>${followerActivity.id}</td>
-								<td>${followerActivity.user.fullName}</td>
-								<td>${followerActivity.objectId}</td>
-								<td>${followerActivity.note}</td>
-								<td>${followerActivity.createdAt}</td>
-								<th>
-									<button type="button" class="btn btn-success">View Detail</button>
-								</th>
-							</tr>
-						</c:forEach>
 
-					</tbody>
-				</table>
+								<th width="30%">Follower Name</th>
+								<th width="50%">Description</th>
+								<th width="20%">Time</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${followerActivities}" var="followerActivity">
+								<tr>
+									<td>${followerActivity.user.fullName}</td>
+
+									<td>${followerActivity.note}</td>
+									<td><time class="timeago"
+											datetime="${followerActivity.createdAt}">${activity.createdAt}</time></td>
+								</tr>
+							</c:forEach>
+
+						</tbody>
+					</table>
 				</c:if>
 			</div>
 		</div>
@@ -187,4 +178,9 @@
 <script src="${jquerymin }" type="text/javascript"></script>
 <script src="${jqueryNivo }" type="text/javascript"></script>
 <script src="${NivoActive }" type="text/javascript"></script>
+<script>
+	jQuery(document).ready(function() {
+		jQuery("time.timeago").timeago();
+	});
+</script>
 </html>

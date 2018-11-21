@@ -52,7 +52,7 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	
+	 
 	<bean id="MarkDAO" class="app.dao.impl.MarkDaoImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
@@ -64,5 +64,13 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-
+	
+	 <bean id="NotificationDAO" class="app.dao.impl.NotificationDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	
+ 
 </beans>

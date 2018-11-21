@@ -37,6 +37,7 @@ public class HomeController extends BaseController {
 		}
 		model.addObject("titles", bookService.getListTitle());
 		model.addObject("categories", categoryService.categoryName());
+		model.addObject("currentUser", currentUser());
 		return model;
 	}
 

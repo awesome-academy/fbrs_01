@@ -46,6 +46,8 @@
 				<property name="reviewDAO" ref="ReviewDAO" />
 				<property name="bookDAO" ref="BookDAO" />
 				<property name="userDAO" ref="UserDAO" />
+				<property name="notificationDAO" ref="NotificationDAO" />
+				<property name="followDAO" ref="FollowDAO" />
 			</bean>
 		</property>
 	</bean>
@@ -105,5 +107,14 @@
 			</bean>
 		</property>
 	</bean> 
+	
+	  <bean id="NotificationService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="app.service.impl.NotificationServiceImpl">
+				<property name="notificationDAO" ref="NotificationDAO"></property>
+			</bean>
+		</property>
+	</bean>  
+	
 
 </beans>

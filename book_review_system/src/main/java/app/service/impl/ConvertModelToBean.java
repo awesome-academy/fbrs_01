@@ -9,6 +9,7 @@ import app.dto.BookInfo;
 import app.dto.CategoryInfo;
 import app.dto.FollowInfo;
 import app.dto.MarkInfo;
+import app.dto.NotificationInfo;
 import app.dto.RequestInfo;
 import app.dto.ReviewInfo;
 import app.dto.RoleInfo;
@@ -18,6 +19,7 @@ import app.model.Book;
 import app.model.Category;
 import app.model.Follow;
 import app.model.Mark;
+import app.model.Notification;
 import app.model.Request;
 import app.model.Review;
 import app.model.Role;
@@ -86,6 +88,35 @@ public class ConvertModelToBean {
 	public static ActivityInfo mapActivityToActivityInfo(Activity activity){
 		Function<Activity, ActivityInfo> map=a->new ActivityInfo(a.getId(), a.getObjectId(), a.getType(), a.getNote(), a.getCreatedAt(), a.getUser());
 		return map.apply(activity);
+	}
+	
+	public static NotificationInfo toNotificationInfo(Notification notification) {
+		return toNotificationInfoWithPro(notification);
+	}
+
+	private static NotificationInfo toNotificationInfoWithPro(Notification notification) {
+		if (notification == null)
+			return null;
+
+		NotificationInfo notificationInfo = new NotificationInfo();
+		notificationInfo.setId(notification.getId());
+		notificationInfo.setContent(notification.getContent());
+		notificationInfo.setWatched(notification.getWatched());
+		notificationInfo.setCreatedAt(notification.getCreatedAt());
+
+		if (notification.getReview() != null)
+			notificationInfo.setReview(mapReviewToReviewInfo(notification.getReview()));
+
+		if (notification.getUser() != null)
+			notificationInfo.setUser(mapUserToUserInfo(notification.getUser()));
+
+		return notificationInfo;
+	}
+	
+	public static List<NotificationInfo> mapListNotificationToNotificationInfo(List<Notification> notifications) {
+		Function<Notification, NotificationInfo> map = n -> new NotificationInfo(n.getId(),mapUserToUserInfo(n.getUser()) , mapReviewToReviewInfo(n.getReview()), n.getContent());
+		List<NotificationInfo> listReviewsInfo = notifications.stream().map(map).collect(Collectors.toList());
+		return listReviewsInfo;
 	}
 
 

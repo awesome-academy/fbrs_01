@@ -10,6 +10,7 @@ import app.dao.CategoryDAO;
 import app.dao.CommentDAO;
 import app.dao.FollowDAO;
 import app.dao.MarkDAO;
+import app.dao.NotificationDAO;
 import app.dao.RequestDAO;
 import app.dao.ReviewDAO;
 import app.dao.RoleDAO;
@@ -27,6 +28,7 @@ public class BaseServiceImpl {
 	protected MarkDAO markDAO;
 	protected RequestDAO requestDAO;
 	protected MailSender mailSender;
+	protected NotificationDAO notificationDAO;
 	@Autowired
 	protected ReloadableResourceBundleMessageSource messageSource;
 
@@ -124,6 +126,14 @@ public class BaseServiceImpl {
 
 	public void setMessageSource(ReloadableResourceBundleMessageSource messageSource) {
 		this.messageSource = messageSource;
+	}
+	
+	public NotificationDAO getNotificationDAO() {
+		return notificationDAO;
+	}
+
+	public void setNotificationDAO(NotificationDAO notificationDAO) {
+		this.notificationDAO = notificationDAO;
 	}
 
 }

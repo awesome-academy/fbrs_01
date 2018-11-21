@@ -1,6 +1,6 @@
 package app.model;
 
-public class Follow {
+public class Follow  {
 	private Integer id;
 	private User follower;
 	private User followed;

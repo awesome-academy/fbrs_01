@@ -31,7 +31,6 @@
 									<security:authorize access="isAuthenticated()">
 										<li><a href="${requestUrl }">Request</a></li>
 									</security:authorize>
-
 								</ul>
 							</nav>
 						</div>
@@ -51,7 +50,6 @@
 											<i class="fa fa-search"></i>
 										</button>
 									</li>
-
 								</ul>
 							</div>
 						</form>
@@ -82,9 +80,20 @@
 								<a href="${loginUrl}">Login Here</a>
 							</security:authorize>
 						</div>
+						<security:authorize access="isAuthenticated()">
+							<div class="row col-md-6 noti ">
+								<a href="#" class="item-notification"> <i class="fa fa-bell"
+									aria-hidden="true"></i> Notifications <i
+									class="notification-size">${currentUser.getUnWatchedNotifications()}</i>
+									<input type="text" class="currentUser" hidden
+									value="${currentUser.getId() }" />
+								</a>
+								<ul role="menu" class="sub-menu notifications-body">
+								</ul>
+							</div>
+						</security:authorize>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </header>

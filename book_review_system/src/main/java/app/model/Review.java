@@ -11,9 +11,13 @@ public class Review {
 	private Book book;
 	private User user;
 	private List<Comment> comments;
-	
+	private List<Notification> notifications;
+
 	public Review() {
 
+	}
+	public Review(Integer id) {
+		this.id = id;
 	}
 
 	public Integer getId() {
@@ -70,5 +74,12 @@ public class Review {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+	public List<Notification> getNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(List<Notification> notifications) {
+		this.notifications = notifications;
 	}
 }

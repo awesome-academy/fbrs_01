@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="app.model">
+  <class name="Notification" table="notifications">
+    <id name="id" column="id">
+      <generator class="increment" />
+    </id>
+     <property name="content" type="string">
+      <column name="content" not-null="true" />
+    </property>
+    <property name="watched" type="int">
+      <column name="watched" default="false" />
+    </property>
+    <property name="createdAt" type="timestamp">
+      <column name="created_at" />
+    </property>
+    
+     <many-to-one name="user" class="User"
+      cascade="save-update, persist, merge">
+      <column name="userId" not-null="true" />
+    </many-to-one>
+    
+     <many-to-one name="review" class="Review">
+      <column name="reviewId" not-null="true" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>
